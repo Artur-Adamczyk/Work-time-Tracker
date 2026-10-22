@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miernik czasu pracy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">Web App</p>
+      <h1>Miernik czasu pracy</h1>
+      <p class="subtitle">Oblicz czas pracy, zarobioną kwotę oraz użyj timera na żywo.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Ręczne obliczanie</h2>
+        <p class="hint">Wyniki aktualizują się automatycznie po wypełnieniu pól.</p>
+
+        <div class="form-group">
+          <label for="startTime">Czas rozpoczęcia</label>
+          <input id="startTime" type="time" />
+        </div>
+
+        <div class="form-group">
+          <label for="endTime">Czas zakończenia</label>
+          <input id="endTime" type="time" />
+        </div>
+
+        <div class="form-group">
+          <label for="hourlyRate">Stawka za godzinę</label>
+          <div class="input-with-unit">
+            <input id="hourlyRate" type="number" min="0" step="0.01" placeholder="np. 35" />
+            <span>zł/h</span>
+          </div>
+        </div>
+
+        <div class="result-box" aria-live="polite">
+          <div>
+            <span>Przepracowany czas</span>
+            <strong id="manualWorkTime">00:00:00</strong>
+          </div>
+          <div>
+            <span>Zarobiona kwota</span>
+            <strong id="manualEarned">0.00 zł</strong>
+          </div>
+        </div>
+
+        <p id="manualError" class="error" role="alert"></p>
+      </article>
+
+      <article class="card timer-card">
+        <h2>Timer pracy</h2>
+        <p class="hint">Uruchom licznik i obserwuj czas oraz zarobki na żywo.</p>
+
+        <div class="form-group">
+          <label for="timerRate">Stawka za godzinę</label>
+          <div class="input-with-unit">
+            <input id="timerRate" type="number" min="0" step="0.01" placeholder="np. 35" />
+            <span>zł/h</span>
+          </div>
+        </div>
+
+        <p id="timerError" class="error" role="alert"></p>
+
+        <div
+          class="timer-display"
+          id="timerDisplay"
+          aria-live="off"
+          aria-label="Czas pracy"
+        >00:00:00</div>
+        <div
+          class="money-display"
+          id="timerEarned"
+          aria-live="polite"
+          aria-label="Zarobiona kwota"
+        >0.00 zł</div>
+
+        <div class="buttons">
+          <button id="startBtn" class="primary-btn">Start</button>
+          <button id="pauseBtn" class="secondary-btn">Pauza</button>
+          <button id="resetBtn" class="danger-btn">Reset</button>
+        </div>
+
+        <div class="result-box compact">
+          <div>
+            <span>Start</span>
+            <strong id="liveStartTime">--:--</strong>
+          </div>
+          <div>
+            <span>Status</span>
+            <strong id="timerStatus" aria-live="polite">Zatrzymany</strong>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
